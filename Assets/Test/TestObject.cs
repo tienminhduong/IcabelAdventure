@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class TestObject : MonoBehaviour
+{
+    float timer = 5;
+    private void OnEnable()
+    {
+        timer = 5;
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("Destroying object: " + gameObject.name);
+            ObjectPoolManager.ReturnToPool(gameObject);
+        }
+    }
+}
