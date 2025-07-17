@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class Bee : Enemy
+public class Rhino : Enemy
 {
-    const string playerTag = "Player";
+    [SerializeField] float damage;
     protected override void Attack(GameObject gameObject)
     {
         playerTest player = gameObject.GetComponent<playerTest>();
-        if (player != null && player.IsAlive())
+        if(player != null && player.IsAlive())
         {
-            player.KnockOut();
-        }
+            player.DecreaseHp(damage);
+        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag(playerTag))
+        if (collision.gameObject.CompareTag(ConstValue.PLAYER_TAG))
         {
             Attack(collision.gameObject);
         }
