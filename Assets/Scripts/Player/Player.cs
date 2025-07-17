@@ -8,8 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpGravityScale = 5f;
     [SerializeField] private float fallGravityScale = 15f;
 
-    [SerializeField] private int weight;
-    [SerializeField] private int maxWeight;
+    [SerializeField] private float weight;
 
     private Rigidbody2D rigidBody;
 
@@ -44,13 +43,13 @@ public class Player : MonoBehaviour
             collidable.OnCollisionWithPlayer(this);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         weight -= damage;
-        if (weight < 0)
-        {
-            weight = 0;
-        }
+        //if (weight < 0)
+        //{
+        //    weight = 0;
+        //}
     }
 
     public void KnockOut()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Enemy : PooledObject
+public class Enemy : PooledObject
 {
     private Animator animator;
     [SerializeField] private float enemySpeed;
@@ -22,6 +22,4 @@ public abstract class Enemy : PooledObject
     //{
     //    animator.speed = speed / maxSpeed;
     //}    
-
-    protected abstract void Attack(GameObject gameObject);
 }
