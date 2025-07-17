@@ -19,4 +19,9 @@ public class PooledObject : MonoBehaviour
     {
         ObjectPoolManager.ReturnToPool(gameObject);
     }
+
+    public void SetSpeed(float speed)
+    { 
+        this.speed = speed; 
+    }
 }
