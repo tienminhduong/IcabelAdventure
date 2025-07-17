@@ -8,26 +8,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpGravityScale = 5f;
     [SerializeField] private float fallGravityScale = 15f;
 
-    [SerializeField] private int weight;
-    [SerializeField] private int maxWeight;
+    [SerializeField] private float weight;
 
     private Rigidbody2D rigidBody;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void JumpAction(InputAction.CallbackContext context)
@@ -42,5 +29,32 @@ public class Player : MonoBehaviour
         {
             rigidBody.gravityScale = fallGravityScale;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IPlayerTriggerCollidable collidable))
+            collidable.OnTriggerCollisionWithPlayer(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IPlayerCollidable collidable))
+            collidable.OnCollisionWithPlayer(this);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        weight -= damage;
+        //if (weight < 0)
+        //{
+        //    weight = 0;
+        //}
+    }
+
+    public void KnockOut()
+    {
+        weight = 0;
+        Debug.Log("Player knocked out!");
     }
 }

@@ -1,21 +1,14 @@
 using UnityEngine;
 
-public class Bee : Enemy
+public class Bee : Enemy, IPlayerTriggerCollidable
 {
-    protected override void Attack(GameObject gameObject)
+    private void AttackPlayer(Player player)
     {
-        playerTest player = gameObject.GetComponent<playerTest>();
-        if (player != null && player.IsAlive())
-        {
-            player.KnockOut();
-        }
+        player.KnockOut();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerCollisionWithPlayer(Player player)
     {
-        if(collision.gameObject.CompareTag(ConstValue.PLAYER_TAG))
-        {
-            Attack(collision.gameObject);
-        }
+        AttackPlayer(player);
     }
 }
