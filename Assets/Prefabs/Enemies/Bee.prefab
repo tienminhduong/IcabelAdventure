@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832126606648049743}
+  - component: {fileID: 68381120706348008}
   - component: {fileID: 6626742215134153711}
   - component: {fileID: 3330513154797722465}
   - component: {fileID: 7725635935177994505}
-  - component: {fileID: 68381120706348008}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Untagged
@@ -35,6 +35,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &68381120706348008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24452872716458070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561164f12733e2944ac45acd2e55525c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 0
+  acceleration: 0
+  maxSpeed: 0
+  enemySpeed: 0
 --- !u!212 &6626742215134153711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -158,16 +174,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6257066, y: 0.6944444}
   m_EdgeRadius: 0
---- !u!114 &68381120706348008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24452872716458070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 561164f12733e2944ac45acd2e55525c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5

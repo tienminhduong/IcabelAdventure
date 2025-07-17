@@ -8,11 +8,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpGravityScale = 5f;
     [SerializeField] private float fallGravityScale = 15f;
 
-    private Rigidbody2D rb;
+    [SerializeField] private int weight;
+    [SerializeField] private int maxWeight;
+
+    private Rigidbody2D rigidBody;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,13 +34,13 @@ public class Player : MonoBehaviour
     {
         if (context.performed)
         {
-            rb.gravityScale = jumpGravityScale;
-            float jumpForce = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rb.gravityScale)) * rb.mass;
-            rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+            rigidBody.gravityScale = jumpGravityScale;
+            float jumpForce = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
+            rigidBody.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
-        else if (context.canceled)
+        if (context.canceled)
         {
-            rb.gravityScale = fallGravityScale;
+            rigidBody.gravityScale = fallGravityScale;
         }
     }
 }

@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
 
 public class ObjectPoolManager : MonoBehaviour
 {
     [SerializeField] private bool isAddedToDontDestroyOnLoad = false;
 
-    [SerializeField] private static GameObject gameObjectPoolHolder;
-
+    private static GameObject gameObjectPoolHolder;
     private static Dictionary<GameObject, ObjectPool<GameObject>> objectPools;
     private static Dictionary<GameObject, GameObject> cloneToPrefabMap;
 
@@ -18,18 +16,6 @@ public class ObjectPoolManager : MonoBehaviour
         cloneToPrefabMap ??= new Dictionary<GameObject, GameObject>();
 
         SetupHolder();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public enum PoolType
@@ -81,7 +67,7 @@ public class ObjectPoolManager : MonoBehaviour
 
     private static GameObject GetParentObject(PoolType poolType)
     {
-        switch(poolType)
+        switch (poolType)
         {
             case PoolType.GameObject:
                 return gameObjectPoolHolder;
