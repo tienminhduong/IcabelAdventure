@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestObject : MonoBehaviour
+public class TestObject : PooledObject
 {
     float timer = 5;
     private void OnEnable()
@@ -14,8 +14,9 @@ public class TestObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (timer > 0)
         {
             timer -= Time.deltaTime;
