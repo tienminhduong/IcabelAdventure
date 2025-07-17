@@ -17,6 +17,15 @@ public class PooledObject : MonoBehaviour
         transform.position += speed * Time.deltaTime * Vector3.left;
     }
 
+    public void ReturnPool()
+    {
+        ObjectPoolManager.ReturnToPool(gameObject);
+    }
+
+    public void SetSpeed(float speed)
+    { 
+        this.speed = speed; 
+        }
     public virtual void ResetObject()
     {
         Debug.Log($"Resetting object {gameObject.name}");
