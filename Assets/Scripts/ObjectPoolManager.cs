@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class ObjectPoolManager : MonoBehaviour
 {
@@ -91,7 +92,14 @@ public class ObjectPoolManager : MonoBehaviour
 
     private static void OnGetObject(GameObject obj)
     {
-
+        if (!obj.TryGetComponent<PooledObject>(out var pooledObject))
+        {
+            Debug.LogWarning($"Object {obj.name} is not a PooledObject.");
+        }
+        else
+        {
+            pooledObject.ResetObject();
+        }
     }
 
     private static void OnReleaseObject(GameObject obj)
