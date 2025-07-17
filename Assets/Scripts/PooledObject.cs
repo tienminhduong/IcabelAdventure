@@ -2,11 +2,7 @@ using UnityEngine;
 
 public class PooledObject : MonoBehaviour
 {
-    [SerializeField] private float baseSpeed;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float maxSpeed;
-
-    public virtual float Speed => baseSpeed;
+    public virtual float Speed => GameManager.Instance.GameSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,11 +18,6 @@ public class PooledObject : MonoBehaviour
     public void ReturnPool()
     {
         ObjectPoolManager.ReturnToPool(gameObject);
-    }
-
-    public void SetSpeed(float speed)
-    {
-        this.baseSpeed = speed;
     }
 
     public virtual void ResetObject()

@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3444805317409538412, guid: 2f317ac1198405a4cb23a3e56c4b0e0f, type: 3}
+      propertyPath: enemySpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5284064919422311181, guid: 2f317ac1198405a4cb23a3e56c4b0e0f, type: 3}
       propertyPath: m_Name
       value: Rhino
@@ -313,6 +317,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &521957742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521957743}
+  - component: {fileID: 521957744}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521957743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521957742}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.75059, y: -3.39222, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &521957744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521957742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b515fde824ad8a748a17d0943422093b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSpeed: 3
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bee
       objectReference: {fileID: 0}
+    - target: {fileID: 68381120706348008, guid: 507da6954d4832a40ab9bb58dbed5ac6, type: 3}
+      propertyPath: enemySpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 832126606648049743, guid: 507da6954d4832a40ab9bb58dbed5ac6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.2751
@@ -578,3 +631,4 @@ SceneRoots:
   - {fileID: 500390455}
   - {fileID: 971460443}
   - {fileID: 8903322660734403219}
+  - {fileID: 521957743}
