@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PooledObject : MonoBehaviour
 {
     protected BoxCollider2D boxCollider;
