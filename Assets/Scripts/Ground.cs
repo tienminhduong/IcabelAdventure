@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Ground : PooledObject
@@ -8,6 +8,18 @@ public class Ground : PooledObject
     [SerializeField] private SpriteRenderer middleGroundPartRender;
 
     private readonly float[] groundLengths = { 15f, 25f, 35f };
+
+    protected override void Start()
+    {
+        base.Start();
+        StartCoroutine(DestroyAfter(5f));
+    }
+
+    IEnumerator DestroyAfter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        ReturnPool();
+    }
 
     protected override void Update()
     {

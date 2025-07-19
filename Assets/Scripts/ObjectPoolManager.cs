@@ -168,6 +168,9 @@ public class ObjectPoolManager : MonoBehaviour
                 pool.Release(obj);
         }
         else
-            Debug.LogWarning("Trying to return an object that is not pooled: " + obj.name);
+        {
+            Debug.Log($"{obj.name} was not pooled, it will be destroyed instead!");
+            Destroy(obj);
+        }
     }
 }
