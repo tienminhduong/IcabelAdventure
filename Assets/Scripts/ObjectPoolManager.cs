@@ -55,9 +55,7 @@ public class ObjectPoolManager : MonoBehaviour
         PoolType poolType = PoolType.GameObject
         )
     {
-        prefab.SetActive(false);
         GameObject obj = Instantiate(prefab, position, rotation);
-        prefab.SetActive(true);
 
         var parentObj = GetParentObject(poolType);
         obj.transform.parent = parentObj.transform;
