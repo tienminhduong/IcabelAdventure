@@ -1,15 +1,25 @@
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class PooledObject : MonoBehaviour
 {
+    protected BoxCollider2D boxCollider;
+
     public virtual float Speed => GameManager.Instance.GameSpeed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual float ObjectWidth => boxCollider.size.x;
+    public virtual float ObjectHeight => boxCollider.size.y;
+
+    protected virtual void Awake()
     {
-        
+        boxCollider = GetComponent<BoxCollider2D>();
+        if (boxCollider == null)
+            Debug.LogError($"BoxCollider2D not found on {gameObject.name}.");
     }
 
-    // Update is called once per frame
+    protected virtual void Start()
+    {
+    }
+
     protected virtual void Update()
     {
         transform.position += Speed * Time.deltaTime * Vector3.left;
