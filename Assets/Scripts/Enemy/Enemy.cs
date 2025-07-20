@@ -6,8 +6,9 @@ public class Enemy : PooledObject
     [SerializeField] private float enemySpeed;
     public override float Speed => base.Speed + enemySpeed;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         animator = GetComponent<Animator>();
     }
 
