@@ -57,4 +57,9 @@ public class Player : MonoBehaviour
         weight = 0;
         Debug.Log("Player knocked out!");
     }
+
+    public void AddWeight(float weight)
+    {
+        this.weight += weight;
+    }    
 }
