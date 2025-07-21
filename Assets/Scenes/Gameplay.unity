@@ -1889,6 +1889,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7320470200189049325, guid: df3fd5cc21da81844a8623ac712c2b0c, type: 3}
+      propertyPath: responses.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ThrowFruit
+      objectReference: {fileID: 0}
     - target: {fileID: 8180270627098252723, guid: df3fd5cc21da81844a8623ac712c2b0c, type: 3}
       propertyPath: m_Name
       value: Player
