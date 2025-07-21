@@ -432,7 +432,7 @@ Transform:
   m_GameObject: {fileID: 511500694}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.89, y: -2.25, z: 0}
+  m_LocalPosition: {x: 0, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -460,6 +460,7 @@ MonoBehaviour:
   - {fileID: 5690539762340276002, guid: 1f60f965341911f4c9efd03c6a01e5ef, type: 3}
   - {fileID: 616693070225371629, guid: 918c740df02f82342bd7db736a0ad908, type: 3}
   enableFruitSpawning: 0
+  distanceToSpawnFruit: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b515fde824ad8a748a17d0943422093b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSpeed: 0
+  gameSpeed: 3
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

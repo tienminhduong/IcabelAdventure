@@ -28,8 +28,10 @@ public class Player : MonoBehaviour
     {
         if (context.performed)
         {
+            float height = jumpHeight / (1f + 0.0005f * weight);
+            Debug.Log(height);
             rigidBody.gravityScale = jumpGravityScale;
-            float jumpForce = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
+            float jumpForce = Mathf.Sqrt(2 * height * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
             rigidBody.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
         if (context.canceled)
@@ -40,8 +42,10 @@ public class Player : MonoBehaviour
 
     public void OnJumpButtonPressed()
     {
+        float height = jumpHeight / (1f + 0.0005f * weight);
+        Debug.Log(height);
         rigidBody.gravityScale = jumpGravityScale;
-        float jumpForce = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
+        float jumpForce = Mathf.Sqrt(2 * height * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
         rigidBody.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
     }
 
