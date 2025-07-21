@@ -3,6 +3,7 @@ using UnityEngine;
 public class Fruit : PooledObject, IPlayerTriggerCollidable
 {
     [SerializeField] private FruitData fruitData;
+    public FruitData FruitData => fruitData;
 
     protected override void Start()
     {
@@ -13,9 +14,7 @@ public class Fruit : PooledObject, IPlayerTriggerCollidable
 
     public void OnTriggerCollisionWithPlayer(Player player)
     {
-        // add weight to player
-        player.AddWeight(fruitData.weight);
-        // return to pool
+        player.AddFruitItem(this);
         ObjectPoolManager.ReturnToPool(this.gameObject);
     }
 }

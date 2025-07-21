@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using UnityEditor.Rendering;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float weight;
 
     private Rigidbody2D rigidBody;
+
+    private List<Fruit> collectedFruit = new();
 
     private void Awake()
     {
@@ -31,6 +36,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnJumpButtonPressed()
+    {
+        rigidBody.gravityScale = jumpGravityScale;
+        float jumpForce = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
+        rigidBody.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+    }
+
+    public void OnJumpButtonReleased()
+    {
+        rigidBody.gravityScale = fallGravityScale;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out IPlayerTriggerCollidable collidable))
@@ -45,11 +62,17 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        weight -= damage;
-        //if (weight < 0)
-        //{
-        //    weight = 0;
-        //}
+        if (weight > 0)
+        {
+            weight -= damage;
+            var firstFruitInList = collectedFruit.FirstOrDefault();
+            if (firstFruitInList != null)
+                RemoveFruitItem(firstFruitInList);
+        }
+        else
+        {
+            KnockOut();
+        }
     }
 
     public void KnockOut()
@@ -61,5 +84,25 @@ public class Player : MonoBehaviour
     public void AddWeight(float weight)
     {
         this.weight += weight;
-    }    
+    }
+
+    public void AddFruitItem(Fruit fruit)
+    {
+        if (fruit == null) return;
+        collectedFruit.Add(fruit);
+        weight += fruit.FruitData.weight;
+    }
+
+    public void RemoveFruitItem(Fruit fruit)
+    {
+        if (collectedFruit.Contains(fruit))
+        {
+            collectedFruit.Remove(fruit);
+            weight -= fruit.FruitData.weight;
+        }
+        else
+        {
+            Debug.LogWarning($"Fruit {fruit.FruitData.fruitName} not found in collected items.");
+        }
+    }
 }
