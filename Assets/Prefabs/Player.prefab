@@ -108,6 +108,7 @@ MonoBehaviour:
   jumpHeight: 4
   jumpGravityScale: 5
   fallGravityScale: 10
+  totalCollected: 0
   weight: 0
   collectFruitPublisher: {fileID: 11400000, guid: 385fc6d673eb1c348b3a5f1e51cb6e1a, type: 2}
   throwRandomFruitPublisher: {fileID: 11400000, guid: 88e6e7feaa754004a90ef0b95cd1eac3, type: 2}
@@ -191,7 +192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8180270627098252723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8180270627098252723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0101163414ab36428b8c3673670bb2d, type: 3}
   m_Name: 

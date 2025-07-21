@@ -12,13 +12,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallGravityScale = 15f;
 
     [SerializeField] private float totalCollected = 0;
+    [SerializeField] private Animator animator;
     public float TotalCollected => totalCollected;
 
     [SerializeField] private float weight;
     [SerializeField] private FruitEventPublisher collectFruitPublisher;
     [SerializeField] private FruitEventPublisher throwRandomFruitPublisher;
 
-    private bool isOnGround = false;
+    [SerializeField] private bool isOnGround = false;
 
     private Rigidbody2D rigidBody;
 
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
     {
         if (context.performed)
         {
-            float height = jumpHeight / (1f + 0.0005f * weight);
+            float height = jumpHeight / (1f + 0.005f * weight);
             Debug.Log(height);
             rigidBody.gravityScale = jumpGravityScale;
             float jumpForce = Mathf.Sqrt(2 * height * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
@@ -55,14 +56,14 @@ public class Player : MonoBehaviour
         if (!isOnGround)
             return;
 
-
         float height = jumpHeight / (1f + 0.005f * weight);
         Debug.Log(height);
         rigidBody.linearVelocity = Vector2.zero;
         rigidBody.gravityScale = jumpGravityScale;
         float jumpForce = Mathf.Sqrt(2 * height * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
-        rigidBody.AddForce(jumpForce * (new Vector2(1f, 9f)).normalized, ForceMode2D.Impulse);
+        rigidBody.AddForce(jumpForce * (new Vector2(0.5f, 9f)).normalized, ForceMode2D.Impulse);
         isOnGround = false;
+        animator.SetTrigger("JumpTrigger");
     }
 
     public void OnJumpButtonReleased()
@@ -100,6 +101,8 @@ public class Player : MonoBehaviour
             var firstFruitInList = collectedFruit.FirstOrDefault();
             if (firstFruitInList != null)
                 throwRandomFruitPublisher.RaiseEvent(firstFruitInList);
+
+            animator.SetTrigger("AttackedTrigger");
         }
         else
         {
@@ -120,6 +123,7 @@ public class Player : MonoBehaviour
         weight += fruit.FruitData.weight;
         totalCollected += fruit.FruitData.weight;
         collectFruitPublisher.RaiseEvent(fruit);
+        animator.SetTrigger("EatTrigger");
     }
 
     public void ThrowFruit(Fruit fruit)
