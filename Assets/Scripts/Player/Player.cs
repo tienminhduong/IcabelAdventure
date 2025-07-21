@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     [SerializeField] private FruitEventPublisher collectFruitPublisher;
     [SerializeField] private FruitEventPublisher throwRandomFruitPublisher;
 
+    [Header("For debugging")]
+    [SerializeField] private bool isCollidingWithObstacle = false;
+    [SerializeField] private bool isOnGround = false;
+
     private Rigidbody2D rigidBody;
 
     private List<Fruit> collectedFruit = new();
@@ -22,6 +26,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        CenterPlayer();
     }
 
     public void JumpAction(InputAction.CallbackContext context)
@@ -42,11 +51,15 @@ public class Player : MonoBehaviour
 
     public void OnJumpButtonPressed()
     {
+        if (!isOnGround)
+            return;
+
         float height = jumpHeight / (1f + 0.0005f * weight);
         Debug.Log(height);
         rigidBody.gravityScale = jumpGravityScale;
         float jumpForce = Mathf.Sqrt(2 * height * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
-        rigidBody.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+        rigidBody.AddForce(jumpForce * (new Vector2(0.5f, 9f)).normalized, ForceMode2D.Impulse);
+        isOnGround = false;
     }
 
     public void OnJumpButtonReleased()
@@ -62,8 +75,32 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag(ConstValue.GROUND_TAG))
+        {
+            isOnGround = true;
+        }
+        else
+        {
+            var contact = collision.GetContact(0);
+            Debug.Log($"Collision with {collision.gameObject.name} with normal {contact.normal}");
+            if (contact.normal.y > 0.5)
+                isOnGround = true;
+            isCollidingWithObstacle = true;
+        }
         if (collision.gameObject.TryGetComponent(out IPlayerCollidable collidable))
             collidable.OnCollisionWithPlayer(this);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(ConstValue.GROUND_TAG))
+        {
+            isOnGround = false;
+        }
+        else
+        {
+            isCollidingWithObstacle = false;
+        }
     }
 
     public void TakeDamage(float damage)
@@ -86,11 +123,6 @@ public class Player : MonoBehaviour
         Debug.Log("Player knocked out!");
     }
 
-    public void AddWeight(float weight)
-    {
-        this.weight += weight;
-    }
-
     public void AddFruitItem(Fruit fruit)
     {
         if (fruit == null) return;
@@ -110,5 +142,17 @@ public class Player : MonoBehaviour
         {
             Debug.LogWarning($"Fruit {fruit.gameObject.name} not found in collected items.");
         }
+    }
+
+    private void CenterPlayer()
+    {
+        if (isCollidingWithObstacle || !isOnGround)
+            return;
+
+        if (transform.position.x == GameManager.Instance.PlayerCenterPosition.x)
+            return;
+
+        float dX = GameManager.Instance.PlayerCenterPosition.x - transform.position.x;
+        rigidBody.linearVelocityX = 2 * dX;
     }
 }
