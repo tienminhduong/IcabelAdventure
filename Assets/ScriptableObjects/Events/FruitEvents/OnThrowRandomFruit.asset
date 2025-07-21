@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
-  m_Name: Kiwi
+  m_Script: {fileID: 11500000, guid: de7510ccdd6a6d944a652fa3ecb7bb53, type: 3}
+  m_Name: OnThrowRandomFruit
   m_EditorClassIdentifier: 
-  fruitName: Kiwi
-  weight: 10
-  animationController: {fileID: 9100000, guid: 5449e4004752bbd48a4a4c8d5e65228d, type: 2}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
-  m_Name: BananaData
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  fruitName: Banana
-  weight: 10
-  animationController: {fileID: 9100000, guid: 978346ff8d6e6c94391133d5989e0760, type: 2}
+  weight: 20
+  fruitSprite: {fileID: 7293598183456022363, guid: 1ddc9afd21fec77489b1248d18f31b68, type: 3}
+  animationController: {fileID: 9100000, guid: 7da561641ce1ee44f9112cb71a87ea3e, type: 2}
