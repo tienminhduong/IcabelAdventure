@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2528109737976504603}
   - component: {fileID: 818054472195966073}
   - component: {fileID: 4648213148021221193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlockingStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

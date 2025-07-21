@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpGravityScale = 5f;
     [SerializeField] private float fallGravityScale = 15f;
 
+    [SerializeField] private float totalCollected = 0;
+    public float TotalCollected => totalCollected;
+
     [SerializeField] private float weight;
     [SerializeField] private FruitEventPublisher collectFruitPublisher;
     [SerializeField] private FruitEventPublisher throwRandomFruitPublisher;
 
-    [Header("For debugging")]
-    [SerializeField] private bool isCollidingWithObstacle = false;
-    [SerializeField] private bool isOnGround = false;
+    private bool isOnGround = false;
 
     private Rigidbody2D rigidBody;
 
@@ -54,11 +55,13 @@ public class Player : MonoBehaviour
         if (!isOnGround)
             return;
 
-        float height = jumpHeight / (1f + 0.0005f * weight);
+
+        float height = jumpHeight / (1f + 0.005f * weight);
         Debug.Log(height);
+        rigidBody.linearVelocity = Vector2.zero;
         rigidBody.gravityScale = jumpGravityScale;
         float jumpForce = Mathf.Sqrt(2 * height * Mathf.Abs(Physics2D.gravity.y * rigidBody.gravityScale)) * rigidBody.mass;
-        rigidBody.AddForce(jumpForce * (new Vector2(0.5f, 9f)).normalized, ForceMode2D.Impulse);
+        rigidBody.AddForce(jumpForce * (new Vector2(1f, 9f)).normalized, ForceMode2D.Impulse);
         isOnGround = false;
     }
 
@@ -75,20 +78,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(ConstValue.GROUND_TAG))
-        {
-            isOnGround = true;
-        }
-        else
-        {
-            var contact = collision.GetContact(0);
-            Debug.Log($"Collision with {collision.gameObject.name} with normal {contact.normal}");
-            if (contact.normal.y > 0.5)
-                isOnGround = true;
-            isCollidingWithObstacle = true;
-        }
         if (collision.gameObject.TryGetComponent(out IPlayerCollidable collidable))
             collidable.OnCollisionWithPlayer(this);
+
+        if (collision.gameObject.CompareTag(ConstValue.GROUND_TAG))
+            isOnGround = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -96,10 +90,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag(ConstValue.GROUND_TAG))
         {
             isOnGround = false;
-        }
-        else
-        {
-            isCollidingWithObstacle = false;
         }
     }
 
@@ -128,6 +118,7 @@ public class Player : MonoBehaviour
         if (fruit == null) return;
         collectedFruit.Add(fruit);
         weight += fruit.FruitData.weight;
+        totalCollected += fruit.FruitData.weight;
         collectFruitPublisher.RaiseEvent(fruit);
     }
 
@@ -146,7 +137,7 @@ public class Player : MonoBehaviour
 
     private void CenterPlayer()
     {
-        if (isCollidingWithObstacle || !isOnGround)
+        if (!isOnGround)
             return;
 
         if (transform.position.x == GameManager.Instance.PlayerCenterPosition.x)

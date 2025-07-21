@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6189202480322452783}
   - component: {fileID: 4277677052752485617}
   m_Layer: 0
-  m_Name: Mid (1)
+  m_Name: LowerMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 6524469095764062054}
   - component: {fileID: 6362721605326775354}
   m_Layer: 0
-  m_Name: Head (1)
+  m_Name: LowerHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 577924626861601729}
   - component: {fileID: 5796179646227421984}
   - component: {fileID: 902849772237623528}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -559,7 +559,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 26, y: 1}
+  m_Size: {x: 26, y: 4}
   m_EdgeRadius: 0
 --- !u!1 &9151879138640856124
 GameObject:
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 3213044186700416669}
   - component: {fileID: 8937459188436770462}
   m_Layer: 0
-  m_Name: Tail (1)
+  m_Name: LowerTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

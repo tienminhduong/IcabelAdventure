@@ -644,7 +644,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 3
+  maxGameSpeed: 20
   playerCenterTransform: {fileID: 1509851527}
+  player: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,18 +1035,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 902849772237623528, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
-      propertyPath: m_Size.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 902849772237623528, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947676316741338697, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
-      propertyPath: m_Name
-      value: LowerMid
-      objectReference: {fileID: 0}
     - target: {fileID: 6620170858552301184, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.45
@@ -1085,17 +1075,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7896097479721125893, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
-      propertyPath: m_Name
-      value: LowerHead
-      objectReference: {fileID: 0}
     - target: {fileID: 8865862483090603195, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
       propertyPath: m_Name
       value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 9151879138640856124, guid: d976f969e7f28804887c12fdd3dad402, type: 3}
-      propertyPath: m_Name
-      value: LowerTail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
