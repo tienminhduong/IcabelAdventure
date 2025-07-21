@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
-  m_Name: Cherry
+  m_Name: Pineapple
   m_EditorClassIdentifier: 
-  fruitName: Cherry
   weight: 10
-  animationController: {fileID: 9100000, guid: 8b813a3d0a09efc478822fa4bcbf970c, type: 2}
+  fruitSprite: {fileID: 837517196756356485, guid: 131e485692e27e84c86170dad18cda85, type: 3}
+  animationController: {fileID: 9100000, guid: 138302486601bd042a3a9bdd433abb7e, type: 2}

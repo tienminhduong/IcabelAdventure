@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallGravityScale = 15f;
 
     [SerializeField] private float weight;
+    [SerializeField] private FruitEventPublisher collectFruitPublisher;
 
     private Rigidbody2D rigidBody;
 
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
             weight -= damage;
             var firstFruitInList = collectedFruit.FirstOrDefault();
             if (firstFruitInList != null)
-                RemoveFruitItem(firstFruitInList);
+                ThrowFruit(firstFruitInList);
         }
         else
         {
@@ -91,9 +92,10 @@ public class Player : MonoBehaviour
         if (fruit == null) return;
         collectedFruit.Add(fruit);
         weight += fruit.FruitData.weight;
+        collectFruitPublisher.RaiseEvent(fruit);
     }
 
-    public void RemoveFruitItem(Fruit fruit)
+    public void ThrowFruit(Fruit fruit)
     {
         if (collectedFruit.Contains(fruit))
         {
@@ -102,7 +104,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Fruit {fruit.FruitData.fruitName} not found in collected items.");
+            Debug.LogWarning($"Fruit {fruit.gameObject.name} not found in collected items.");
         }
     }
 }

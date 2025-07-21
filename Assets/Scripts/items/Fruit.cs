@@ -4,7 +4,7 @@ public class Fruit : PooledObject, IPlayerTriggerCollidable
 {
     [SerializeField] private FruitData fruitData;
     public FruitData FruitData => fruitData;
-
+    
     protected override void Start()
     {
         base.Start();
@@ -15,6 +15,7 @@ public class Fruit : PooledObject, IPlayerTriggerCollidable
     public void OnTriggerCollisionWithPlayer(Player player)
     {
         player.AddFruitItem(this);
-        ObjectPoolManager.ReturnToPool(this.gameObject);
+        //ObjectPoolManager.ReturnToPool(this.gameObject);
+        transform.position = new Vector3(1000, 1000, 0); // Move off-screen
     }
 }

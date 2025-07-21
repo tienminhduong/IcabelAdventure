@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
   m_Name: Orange
   m_EditorClassIdentifier: 
-  fruitName: Orange
   weight: 10
+  fruitSprite: {fileID: 4121880872312635667, guid: ffc9f271fad56c243a45f100b9dc6778, type: 3}
   animationController: {fileID: 9100000, guid: 1c7f5675613015f42bf2fd05cf676f79, type: 2}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
-  m_Name: Strawberry
+  m_Name: Kiwi
   m_EditorClassIdentifier: 
-  fruitName: Strawberry
   weight: 10
-  animationController: {fileID: 9100000, guid: e9fa82476d7ef2640b77ecc1f1361ae9, type: 2}
+  fruitSprite: {fileID: 4138223980208024357, guid: 5100b75572e484e458e4340e2afe9454, type: 3}
+  animationController: {fileID: 9100000, guid: 5449e4004752bbd48a4a4c8d5e65228d, type: 2}
