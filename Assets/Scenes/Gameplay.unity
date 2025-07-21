@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b515fde824ad8a748a17d0943422093b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSpeed: 3
+  gameSpeed: 20
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1266,7 @@ Transform:
   m_GameObject: {fileID: 1228578405}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.46, y: 0, z: 0}
+  m_LocalPosition: {x: -11.85, y: 0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1592,6 +1592,14 @@ PrefabInstance:
     - target: {fileID: 700110909307598442, guid: df3fd5cc21da81844a8623ac712c2b0c, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430981843487981434, guid: df3fd5cc21da81844a8623ac712c2b0c, type: 3}
+      propertyPath: jumpHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706650718535659428, guid: df3fd5cc21da81844a8623ac712c2b0c, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6459976836644416069, guid: df3fd5cc21da81844a8623ac712c2b0c, type: 3}
       propertyPath: m_LocalPosition.x
