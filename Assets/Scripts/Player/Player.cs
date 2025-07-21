@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float weight;
     [SerializeField] private FruitEventPublisher collectFruitPublisher;
+    [SerializeField] private FruitEventPublisher throwRandomFruitPublisher;
 
     private Rigidbody2D rigidBody;
 
@@ -65,10 +66,9 @@ public class Player : MonoBehaviour
     {
         if (weight > 0)
         {
-            weight -= damage;
             var firstFruitInList = collectedFruit.FirstOrDefault();
             if (firstFruitInList != null)
-                ThrowFruit(firstFruitInList);
+                throwRandomFruitPublisher.RaiseEvent(firstFruitInList);
         }
         else
         {

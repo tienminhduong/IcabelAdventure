@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
   m_Name: Cherry
   m_EditorClassIdentifier: 
-  weight: 10
+  weight: 5
   fruitSprite: {fileID: -4570538037665054336, guid: 3d6be91968cb95546ac95aeff5e52f84, type: 3}
   animationController: {fileID: 9100000, guid: 8b813a3d0a09efc478822fa4bcbf970c, type: 2}

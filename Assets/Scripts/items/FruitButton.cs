@@ -28,4 +28,10 @@ public class FruitButton : MonoBehaviour
             Debug.Log($"Fruit {fruit.gameObject.name} thrown away.");
         }
     }
+
+    public void OnThrowRandom(Fruit fruit)
+    {
+        if (fruit == this.fruit)
+            ThrowAway();
+    }
 }

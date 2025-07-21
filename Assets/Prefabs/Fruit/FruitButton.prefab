@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 1395468349299680250}
   - component: {fileID: 6218809455429915441}
   - component: {fileID: -95359572036985089}
+  - component: {fileID: 6020890032382921160}
   m_Layer: 5
   m_Name: FruitButton
   m_TagString: Untagged
@@ -362,3 +363,31 @@ MonoBehaviour:
   fruitWeightText: {fileID: 6355598327190760079}
   throwAwayPublisher: {fileID: 11400000, guid: 926e0cfb16d92a94cab7192463056904, type: 2}
   fruit: {fileID: 0}
+--- !u!114 &6020890032382921160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693070871376883890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff856e2d036f9840b589aa4331e8382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  publisher: {fileID: 11400000, guid: 88e6e7feaa754004a90ef0b95cd1eac3, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -95359572036985089}
+        m_TargetAssemblyTypeName: FruitButton, Assembly-CSharp
+        m_MethodName: OnThrowRandom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

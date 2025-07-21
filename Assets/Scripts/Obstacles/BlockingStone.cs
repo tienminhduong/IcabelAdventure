@@ -3,6 +3,16 @@ using UnityEngine;
 public class BlockingStone : PooledObject
 {
     [SerializeField] private float damage = 1;
+    [SerializeField] private float pushedMaxTime;
+
+    [SerializeField] private float pushedTime;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        pushedTime = pushedMaxTime;
+    }
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -15,7 +25,16 @@ public class BlockingStone : PooledObject
             {
                 Debug.Log($"Contact normal: {contact.normal.x}");
                 if (contact.normal.x > 0.5f)
-                    player.TakeDamage(damage);
+                {
+                    if (pushedTime > 0)
+                        pushedTime -= Time.deltaTime;
+
+                    if (pushedTime <= 0)
+                    {
+                        player.TakeDamage(damage);
+                        pushedTime = pushedMaxTime;
+                    }
+                }
             }
         }
     }

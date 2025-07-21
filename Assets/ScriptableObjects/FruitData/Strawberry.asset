@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf8f840c7d350440b8e33142517b783, type: 3}
   m_Name: Strawberry
   m_EditorClassIdentifier: 
-  weight: 10
+  weight: 5
   fruitSprite: {fileID: 1775669009216684005, guid: a2c110585eb710b408972fbc3b96136d, type: 3}
   animationController: {fileID: 9100000, guid: e9fa82476d7ef2640b77ecc1f1361ae9, type: 2}
