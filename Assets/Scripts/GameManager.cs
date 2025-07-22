@@ -34,7 +34,7 @@ public class GameManager : SingletonObject<GameManager>
     public void EndGame()
     {
         Time.timeScale = 0f;
-        endgameScoreUI.text = $"Điểm của bạn: {player.TotalPoint}";
+        endgameScoreUI.text = $"Your score: {player.TotalPoint}";
         PlayerPrefs.SetFloat(ConstValue.PLAY_SCORE, player.TotalPoint);
 
         if (PlayerPrefs.HasKey(ConstValue.HIGH_SCORE))

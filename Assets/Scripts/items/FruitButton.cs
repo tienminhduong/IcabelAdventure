@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FruitButton : MonoBehaviour
 {
     [SerializeField] Image fruitImage;
-    [SerializeField] TextMeshProUGUI fruitWeightText;
 
     [SerializeField] FruitEventPublisher throwAwayPublisher;
     [SerializeField] private Fruit fruit;
@@ -15,7 +14,6 @@ public class FruitButton : MonoBehaviour
     {
         this.fruit = fruit;
         fruitImage.sprite = fruit.FruitData.fruitSprite;
-        fruitWeightText.text = fruit.FruitData.weight.ToString();
     }
 
     public void ThrowAway()
