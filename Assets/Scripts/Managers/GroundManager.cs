@@ -6,7 +6,7 @@ public class GroundManager : MonoBehaviour
 
     // The size of the hole, there are 2 sizes: size and double size
     [SerializeField] private float holeBaseSize;
-    private float HoleSize => holeBaseSize;
+    private float HoleSize => holeBaseSize + GameManager.Instance.GameSpeed / 10;
 
     [Header("For debugging")]
     [SerializeField] private float holeSizeCounter;

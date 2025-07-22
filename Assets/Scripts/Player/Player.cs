@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using System.Linq;
 
 public class Player : MonoBehaviour
@@ -11,13 +10,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpGravityScale = 5f;
     [SerializeField] private float fallGravityScale = 15f;
 
-    [SerializeField] private float totalCollected = 0;
+    [SerializeField] private float totalPoint = 0;
     [SerializeField] private Animator animator;
-    public float TotalCollected => totalCollected;
+    public float TotalPoint => totalPoint;
 
     [SerializeField] private float weight;
     [SerializeField] private FruitEventPublisher collectFruitPublisher;
     [SerializeField] private FruitEventPublisher throwRandomFruitPublisher;
+    [SerializeField] private VoidEventPublisher endgamePublisher;
 
     [SerializeField] private bool isOnGround = false;
 
@@ -75,6 +75,11 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out IPlayerTriggerCollidable collidable))
             collidable.OnTriggerCollisionWithPlayer(this);
+
+        if (collision.gameObject.CompareTag(ConstValue.BARRIER_TAG))
+        {
+            endgamePublisher.RaiseEvent();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -96,6 +101,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        totalPoint -= damage;
+        if (totalPoint < 0)
+            totalPoint = 0;
         if (weight > 0)
         {
             var firstFruitInList = collectedFruit.FirstOrDefault();
@@ -112,8 +120,7 @@ public class Player : MonoBehaviour
 
     public void KnockOut()
     {
-        weight = 0;
-        Debug.Log("Player knocked out!");
+        endgamePublisher.RaiseEvent();
     }
 
     public void AddFruitItem(Fruit fruit)
@@ -121,7 +128,7 @@ public class Player : MonoBehaviour
         if (fruit == null) return;
         collectedFruit.Add(fruit);
         weight += fruit.FruitData.weight;
-        totalCollected += fruit.FruitData.weight;
+        totalPoint += fruit.FruitData.weight;
         collectFruitPublisher.RaiseEvent(fruit);
         animator.SetTrigger("EatTrigger");
     }
