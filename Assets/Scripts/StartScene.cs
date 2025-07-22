@@ -5,6 +5,15 @@ public class StartScene : MonoBehaviour
 {
     public void StartButtonClick()
     {
-        SceneManager.LoadSceneAsync(ConstValue.PLAY_SCENE);
+        if (PlayerPrefs.HasKey(ConstValue.PLAYED_TUTORIAL))
+        {
+            SceneManager.LoadSceneAsync(ConstValue.PLAY_SCENE);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(ConstValue.PLAYED_TUTORIAL, 1);
+            SceneManager.LoadSceneAsync(ConstValue.TUTORIAL_SCENE);
+        }
+        
     }
 }

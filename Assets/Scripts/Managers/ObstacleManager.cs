@@ -28,6 +28,9 @@ public class ObstacleManager : MonoBehaviour
 
     private void SpawnObstacle()
     {
+        if (GameManager.Instance.PlayerScore == 0)
+            return;
+
         int rIndex = Random.Range(0, obstaclePrefabs.Length);
         ObjectPoolManager.SpawnObject(obstaclePrefabs[rIndex], transform.position, Quaternion.identity);
     }

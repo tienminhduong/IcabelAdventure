@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         if (!isOnGround)
             return;
 
-        float height = jumpHeight / (1f + 0.005f * weight);
+        float height = jumpHeight / (1f + 0.01f * weight);
         Debug.Log(height);
         rigidBody.linearVelocity = Vector2.zero;
         rigidBody.gravityScale = jumpGravityScale;

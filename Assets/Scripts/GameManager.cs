@@ -9,6 +9,7 @@ public class GameManager : SingletonObject<GameManager>
     [SerializeField] private Transform playerCenterTransform;
 
     [SerializeField] private Player player;
+    public float PlayerScore => player.TotalPoint;
 
     [SerializeField] private TextMeshProUGUI endgameScoreUI;
 
