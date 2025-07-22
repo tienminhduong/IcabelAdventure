@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
         rigidBody.AddForce(jumpForce * (new Vector2(0.5f, 9f)).normalized, ForceMode2D.Impulse);
         isOnGround = false;
         animator.SetTrigger("JumpTrigger");
+        SFXManager.Instance.PlaySFX(SFXManager.SFXType.Jump);
     }
 
     public void OnJumpButtonReleased()
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
                 throwRandomFruitPublisher.RaiseEvent(firstFruitInList);
 
             animator.SetTrigger("AttackedTrigger");
+            SFXManager.Instance.PlaySFX(SFXManager.SFXType.Punch);
         }
         else
         {
@@ -130,7 +132,9 @@ public class Player : MonoBehaviour
         weight += fruit.FruitData.weight;
         totalPoint += fruit.FruitData.weight;
         collectFruitPublisher.RaiseEvent(fruit);
+
         animator.SetTrigger("EatTrigger");
+        SFXManager.Instance.PlaySFX(SFXManager.SFXType.Eat);
     }
 
     public void ThrowFruit(Fruit fruit)
